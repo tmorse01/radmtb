@@ -3,6 +3,8 @@ dist/
 
 # generated types
 .astro/
+.cache/
+src/assets/topography.svg
 
 # dependencies
 node_modules/
