@@ -7,7 +7,7 @@ const navItems = [
 	{ label: 'Clinics', href: '#clinics' },
 	{ label: 'Videos', href: '#videos' },
 	{ label: 'About', href: '#about' },
-	{ label: 'Book', href: '#book' },
+	{ label: 'Book', href: '/book' },
 ];
 
 const trustItems = [
@@ -130,7 +130,7 @@ const bookingSteps = [
 				))}
 			</nav>
 
-			<a class="nav-cta" href="#book">Book Coaching</a>
+			<a class="nav-cta" href="/book">Book Coaching</a>
 		</header>
 
 		<main id="top">
@@ -144,7 +144,7 @@ const bookingSteps = [
 					</p>
 
 					<div class="hero-actions">
-						<a class="button button-primary" href="#book">Book Coaching</a>
+						<a class="button button-primary" href="/book">Book Coaching</a>
 						<a class="button button-secondary" href="#coaching">See Programs</a>
 					</div>
 
@@ -366,12 +366,12 @@ const bookingSteps = [
 			<section id="book" class="section booking-section">
 				<div class="booking-callout reveal" style="--delay: 0.05s;">
 					<p class="eyebrow">Booking</p>
-					<h2>Simple pricing. Clear session options.</h2>
+					<h2>Booking and availability live on a dedicated page.</h2>
 					<p>
-						The closing section keeps the premium look intact while leaving room for a future
-						booking integration such as Calendly, Acuity, or a custom form.
+						Use the booking page for session details, preparation notes, and the Calendly
+						availability placeholder that will become the live scheduling surface.
 					</p>
-					<a class="button button-primary" href="#top">Book a Session</a>
+					<a class="button button-primary" href="/book">Open Booking Page</a>
 				</div>
 
 				<div class="pricing-panel reveal" style="--delay: 0.14s;">
@@ -691,12 +691,8 @@ const bookingSteps = [
 		content: '';
 		position: absolute;
 		inset: 0;
-		background:
-			linear-gradient(120deg, rgba(255, 255, 255, 0.12), transparent 28%),
-			url('/topography.svg');
-		background-size: auto, cover;
-		opacity: 0.3;
-		mix-blend-mode: screen;
+		background: linear-gradient(120deg, rgba(255, 255, 255, 0.1), transparent 32%);
+		opacity: 0.65;
 	}
 
 	.visual-frame-main {
@@ -953,11 +949,8 @@ const bookingSteps = [
 		content: '';
 		position: absolute;
 		inset: 0;
-		background:
-			linear-gradient(120deg, rgba(255, 255, 255, 0.08), transparent 26%),
-			url('/topography.svg');
-		background-size: auto, cover;
-		opacity: 0.26;
+		background: linear-gradient(120deg, rgba(255, 255, 255, 0.08), transparent 28%);
+		opacity: 0.6;
 	}
 
 	.play-button {
