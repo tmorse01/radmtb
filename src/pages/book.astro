@@ -1,0 +1,726 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const navItems = [
+	{ label: 'Home', href: '/' },
+	{ label: 'Coaching', href: '/#coaching' },
+	{ label: 'Clinics', href: '/#clinics' },
+	{ label: 'Videos', href: '/#videos' },
+	{ label: 'About', href: '/#about' },
+	{ label: 'Book', href: '/book' },
+];
+
+const sessions = [
+	{
+		title: 'Private Coaching',
+		price: '$150',
+		format: '1 rider | skills-focused session',
+		details: [
+			'Custom session plan around your goals and terrain comfort.',
+			'Best for riders who want direct feedback and faster progression.',
+			'Ideal for cornering, braking, body position, and line choice.',
+		],
+	},
+	{
+		title: 'Group Clinic',
+		price: '$95',
+		format: 'Small group | shared progression',
+		details: [
+			'Structured coaching with enough repetition to build confidence.',
+			'Best for foundational skills, flow, and feature sessions.',
+			'Works well for friends, club groups, or posted clinic dates.',
+		],
+	},
+	{
+		title: 'Trail Session',
+		price: '$120',
+		format: 'On-trail | applied coaching',
+		details: [
+			'Ride real descents and technical sections with live coaching.',
+			'Best for commitment, speed control, and terrain management.',
+			'Designed for riders who learn best while moving through trail.',
+		],
+	},
+];
+
+const bookingSteps = [
+	'Choose the session format that best matches what you want to work on.',
+	'Review availability and select an open time once Calendly is connected.',
+	'Show up ready to ride with your gear, goals, and the right bike for the terrain.',
+];
+
+const prepItems = [
+	'Helmet, pedals, and bike dialed in before arrival.',
+	'Water, layers, and snacks for trail-based sessions.',
+	'Specific features or trail situations you want to improve.',
+	'Any current injuries, concerns, or terrain hesitations called out ahead of time.',
+];
+
+const availabilityNotes = [
+	'Private sessions can be published as rolling openings inside Calendly.',
+	'Group clinics work best as fixed dates with limited seat counts.',
+	'Trail sessions may shift based on weather, trail conditions, and location access.',
+];
+
+const calendarRows = [
+	['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+	['-', 'Open', 'Open', '-', 'Hold', 'Clinic', 'Trail'],
+	['-', 'PM', 'AM', '-', 'PM', 'Dates', 'Ride'],
+];
+---
+
+<Layout
+	title="Book Coaching | RAD MTB Coaching"
+	description="Book mountain bike coaching, review session options, and preview a Calendly-ready availability layout."
+>
+	<div class="booking-page">
+		<header class="site-header">
+			<a class="brand" href="/" aria-label="RAD MTB Coaching home">
+				<span class="brand-mark">RAD</span>
+				<span class="brand-copy">
+					<span>MTB Coaching</span>
+					<span>Trail-first rider progression</span>
+				</span>
+			</a>
+
+			<nav class="site-nav" aria-label="Primary">
+				{navItems.map((item) => (
+					<a href={item.href} class={item.href === '/book' ? 'is-active' : undefined}>{item.label}</a>
+				))}
+			</nav>
+
+			<a class="nav-cta" href="#availability">Check Availability</a>
+		</header>
+
+		<main class="booking-main">
+			<section class="booking-hero">
+				<div class="hero-copy">
+					<p class="eyebrow">Booking Page</p>
+					<h1>Book coaching with a clear availability flow.</h1>
+					<p class="lede">
+						This page is built to hold the actual scheduling experience: session details,
+						preparation notes, and a Calendly placeholder ready to become the live booking
+						surface.
+					</p>
+
+					<div class="hero-actions">
+						<a class="button button-primary" href="#availability">See Availability</a>
+						<a class="button button-secondary" href="/#coaching">Compare Sessions</a>
+					</div>
+				</div>
+
+				<div class="hero-panel">
+					<div class="hero-panel-top">
+						<span>Booking Snapshot</span>
+						<strong>Live availability will render here once Calendly is connected.</strong>
+					</div>
+
+					<div class="hero-panel-grid">
+						<div>
+							<p>Session Types</p>
+							<h2>3</h2>
+						</div>
+						<div>
+							<p>Locations</p>
+							<h2>4</h2>
+						</div>
+						<div>
+							<p>Style</p>
+							<h2>Trail-Based</h2>
+						</div>
+						<div>
+							<p>Status</p>
+							<h2>Calendly Ready</h2>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="page-section">
+				<div class="section-heading">
+					<p class="eyebrow">Session Options</p>
+					<h2>Choose the format that matches your riding goals.</h2>
+				</div>
+
+				<div class="session-grid">
+					{sessions.map((session) => (
+						<article class="session-card">
+							<p class="session-format">{session.format}</p>
+							<div class="session-head">
+								<h3>{session.title}</h3>
+								<span>{session.price}</span>
+							</div>
+							<ul>
+								{session.details.map((detail) => (
+									<li>{detail}</li>
+								))}
+							</ul>
+						</article>
+					))}
+				</div>
+			</section>
+
+			<section id="availability" class="page-section availability-layout">
+				<div class="calendar-panel">
+					<div class="section-heading">
+						<p class="eyebrow">Availability</p>
+						<h2>Calendly placeholder for live openings.</h2>
+						<p>
+							This panel is sized and positioned to become the inline scheduling widget. Until
+							Calendly is connected, it shows a visual placeholder and integration target.
+						</p>
+					</div>
+
+					<div class="calendly-placeholder" data-calendly-placeholder="true">
+						<div class="calendar-bar">
+							<span>Inline Booking Widget</span>
+							<span>Calendly</span>
+						</div>
+
+						<div class="calendar-grid" aria-hidden="true">
+							{calendarRows.map((row) => (
+								<div class="calendar-row">
+									{row.map((cell) => (
+										<span>{cell}</span>
+									))}
+								</div>
+							))}
+						</div>
+
+						<div class="widget-note">
+							<strong>Integration target:</strong>
+							<span>Replace this block with the Calendly inline embed to show real openings.</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="info-stack">
+					<article class="info-card">
+						<p class="eyebrow">How It Works</p>
+						<ol>
+							{bookingSteps.map((step) => (
+								<li>{step}</li>
+							))}
+						</ol>
+					</article>
+
+					<article class="info-card">
+						<p class="eyebrow">Before You Ride</p>
+						<ul>
+							{prepItems.map((item) => (
+								<li>{item}</li>
+							))}
+						</ul>
+					</article>
+
+					<article class="info-card">
+						<p class="eyebrow">Availability Notes</p>
+						<ul>
+							{availabilityNotes.map((item) => (
+								<li>{item}</li>
+							))}
+						</ul>
+					</article>
+				</div>
+			</section>
+
+			<section class="page-section closing-strip">
+				<div>
+					<p class="eyebrow">Next Step</p>
+					<h2>When Calendly is connected, this page is ready to take bookings.</h2>
+				</div>
+				<div class="closing-actions">
+					<a class="button button-primary" href="#availability">View Booking Area</a>
+					<a class="button button-secondary" href="/#coaching">Back to Coaching</a>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<p>RAD MTB Coaching</p>
+			<span>Premium mountain bike coaching for rider progression, confidence, and control.</span>
+		</footer>
+	</div>
+</Layout>
+
+<style>
+	.booking-page {
+		width: min(calc(100% - 32px), var(--max-width));
+		margin: 0 auto;
+		padding: 22px 0 48px;
+	}
+
+	.site-header {
+		position: sticky;
+		top: 16px;
+		z-index: 20;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 18px;
+		padding: 14px 18px;
+		margin-bottom: 28px;
+		border: 1px solid var(--line);
+		border-radius: 999px;
+		background: rgba(8, 11, 9, 0.72);
+		backdrop-filter: blur(16px);
+		box-shadow: var(--shadow);
+	}
+
+	.brand {
+		display: inline-flex;
+		align-items: center;
+		gap: 14px;
+		text-decoration: none;
+	}
+
+	.brand-mark,
+	.eyebrow,
+	.site-nav a,
+	.session-format {
+		font-family: 'Anton', Impact, sans-serif;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.brand-mark {
+		display: inline-grid;
+		place-items: center;
+		width: 52px;
+		height: 52px;
+		border-radius: 50%;
+		color: #0d120e;
+		background: linear-gradient(135deg, var(--forest-bright), var(--earth));
+		font-size: 1.05rem;
+	}
+
+	.brand-copy {
+		display: grid;
+		gap: 2px;
+	}
+
+	.brand-copy span:first-child {
+		font-weight: 700;
+	}
+
+	.brand-copy span:last-child {
+		color: var(--muted);
+		font-size: 0.82rem;
+	}
+
+	.site-nav {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 20px;
+		flex: 1;
+	}
+
+	.site-nav a {
+		color: var(--muted);
+		font-size: 0.78rem;
+		text-decoration: none;
+	}
+
+	.site-nav a:hover,
+	.site-nav a:focus-visible,
+	.site-nav a.is-active {
+		color: var(--text);
+	}
+
+	.nav-cta,
+	.button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 48px;
+		padding: 0 18px;
+		border-radius: 999px;
+		border: 1px solid transparent;
+		font-weight: 700;
+		text-decoration: none;
+		transition:
+			transform 0.2s ease,
+			border-color 0.2s ease,
+			background 0.2s ease;
+	}
+
+	.nav-cta,
+	.button-primary {
+		color: #081008;
+		background: linear-gradient(135deg, var(--forest-bright), #d3c498 86%);
+	}
+
+	.button-secondary {
+		border-color: var(--line-strong);
+		background: rgba(255, 255, 255, 0.04);
+	}
+
+	.nav-cta:hover,
+	.nav-cta:focus-visible,
+	.button:hover,
+	.button:focus-visible {
+		transform: translateY(-2px);
+	}
+
+	.booking-main {
+		display: grid;
+		gap: 32px;
+	}
+
+	.booking-hero,
+	.availability-layout {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(320px, 0.92fr);
+		gap: 20px;
+		align-items: start;
+	}
+
+	.hero-copy,
+	.hero-panel,
+	.session-card,
+	.calendar-panel,
+	.info-card,
+	.closing-strip {
+		border: 1px solid var(--line);
+		border-radius: var(--radius-xl);
+		background:
+			linear-gradient(160deg, rgba(255, 255, 255, 0.035), transparent 38%),
+			linear-gradient(180deg, rgba(20, 26, 22, 0.95), rgba(11, 14, 12, 0.95));
+		box-shadow: var(--shadow);
+	}
+
+	.hero-copy,
+	.hero-panel,
+	.calendar-panel,
+	.info-card,
+	.closing-strip {
+		padding: 34px;
+	}
+
+	.eyebrow {
+		margin: 0 0 14px;
+		color: var(--earth);
+		font-size: 0.82rem;
+	}
+
+	h1,
+	h2 {
+		margin: 0;
+		font-family: 'Anton', Impact, sans-serif;
+		text-transform: uppercase;
+		letter-spacing: 0.015em;
+		line-height: 1.02;
+	}
+
+	h1 {
+		max-width: 12ch;
+		font-size: clamp(3.4rem, 6.5vw, 5.8rem);
+	}
+
+	h2 {
+		font-size: clamp(1.9rem, 3vw, 3rem);
+	}
+
+	h3 {
+		margin: 0;
+		font-size: 1.45rem;
+		line-height: 1.08;
+	}
+
+	.lede,
+	.section-heading p:last-child,
+	.hero-panel-top span,
+	.widget-note span,
+	.session-card li,
+	.info-card li,
+	.site-footer span {
+		color: var(--muted);
+		line-height: 1.65;
+	}
+
+	.lede {
+		max-width: 58ch;
+		margin: 18px 0 0;
+		font-size: 1.05rem;
+	}
+
+	.hero-actions,
+	.closing-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 14px;
+		margin-top: 26px;
+	}
+
+	.hero-panel {
+		display: grid;
+		gap: 24px;
+		min-height: 100%;
+	}
+
+	.hero-panel-top {
+		display: grid;
+		gap: 10px;
+	}
+
+	.hero-panel-top span {
+		font-size: 0.92rem;
+	}
+
+	.hero-panel-top strong {
+		font-size: 1.35rem;
+		line-height: 1.35;
+	}
+
+	.hero-panel-grid,
+	.session-grid {
+		display: grid;
+		gap: 16px;
+	}
+
+	.hero-panel-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.hero-panel-grid div {
+		padding: 18px;
+		border: 1px solid var(--line);
+		border-radius: var(--radius-md);
+		background: rgba(255, 255, 255, 0.03);
+	}
+
+	.hero-panel-grid p,
+	.session-head span {
+		margin: 0;
+		color: var(--muted);
+	}
+
+	.hero-panel-grid h2 {
+		margin-top: 8px;
+		font-size: 1.5rem;
+	}
+
+	.page-section {
+		display: grid;
+		gap: 22px;
+	}
+
+	.section-heading {
+		display: grid;
+		gap: 14px;
+		max-width: 64ch;
+	}
+
+	.session-grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.session-card {
+		padding: 26px;
+	}
+
+	.session-format {
+		margin: 0 0 16px;
+		color: var(--earth);
+		font-size: 0.78rem;
+	}
+
+	.session-head {
+		display: flex;
+		align-items: end;
+		justify-content: space-between;
+		gap: 16px;
+		margin-bottom: 18px;
+	}
+
+	.session-head span {
+		font-family: 'Anton', Impact, sans-serif;
+		font-size: 2rem;
+		letter-spacing: 0.04em;
+	}
+
+	.session-card ul,
+	.info-card ul,
+	.info-card ol {
+		display: grid;
+		gap: 12px;
+		padding-left: 20px;
+		margin: 0;
+	}
+
+	.calendar-panel {
+		display: grid;
+		gap: 22px;
+	}
+
+	.calendly-placeholder {
+		display: grid;
+		gap: 18px;
+		min-height: 540px;
+		padding: 20px;
+		border: 1px solid var(--line);
+		border-radius: calc(var(--radius-xl) - 6px);
+		background:
+			linear-gradient(180deg, rgba(10, 13, 11, 0.36), rgba(10, 13, 11, 0.92)),
+			linear-gradient(135deg, rgba(93, 124, 84, 0.16), transparent 44%),
+			linear-gradient(180deg, #18201a 0%, #0f1411 100%);
+	}
+
+	.calendar-bar {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+		padding-bottom: 16px;
+		border-bottom: 1px solid var(--line);
+		color: var(--muted);
+		font-size: 0.92rem;
+	}
+
+	.calendar-grid {
+		display: grid;
+		gap: 10px;
+		margin-top: 4px;
+	}
+
+	.calendar-row {
+		display: grid;
+		grid-template-columns: repeat(7, minmax(0, 1fr));
+		gap: 10px;
+	}
+
+	.calendar-row span {
+		display: grid;
+		place-items: center;
+		min-height: 68px;
+		border: 1px solid var(--line);
+		border-radius: 16px;
+		background: rgba(255, 255, 255, 0.035);
+		font-weight: 600;
+	}
+
+	.widget-note {
+		display: grid;
+		gap: 8px;
+		padding: 18px;
+		border: 1px solid var(--line);
+		border-radius: 16px;
+		background: rgba(255, 255, 255, 0.03);
+	}
+
+	.info-stack {
+		display: grid;
+		gap: 16px;
+	}
+
+	.info-card {
+		padding: 26px;
+	}
+
+	.closing-strip {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 18px;
+	}
+
+	.site-footer {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 14px;
+		padding: 34px 4px 16px;
+		color: var(--muted);
+	}
+
+	.site-footer p {
+		margin: 0;
+		color: var(--text);
+		font-family: 'Anton', Impact, sans-serif;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	.site-footer span {
+		max-width: 54ch;
+	}
+
+	@media (max-width: 1120px) {
+		.booking-hero,
+		.availability-layout,
+		.session-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.site-header {
+			border-radius: 32px;
+			flex-wrap: wrap;
+		}
+
+		.site-nav {
+			order: 3;
+			flex-basis: 100%;
+			justify-content: space-between;
+		}
+	}
+
+	@media (max-width: 780px) {
+		.booking-page {
+			width: min(calc(100% - 22px), var(--max-width));
+			padding-top: 12px;
+		}
+
+		.booking-hero,
+		.availability-layout,
+		.session-grid,
+		.hero-panel-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.site-header {
+			position: static;
+			padding: 16px;
+			border-radius: 28px;
+		}
+
+		.site-nav {
+			justify-content: flex-start;
+			flex-wrap: wrap;
+			gap: 14px 18px;
+		}
+
+		.nav-cta {
+			width: 100%;
+		}
+
+		h1 {
+			max-width: none;
+			font-size: clamp(2.9rem, 15vw, 4.8rem);
+		}
+
+		h2 {
+			font-size: clamp(1.8rem, 9vw, 2.5rem);
+		}
+
+		.hero-copy,
+		.hero-panel,
+		.calendar-panel,
+		.info-card,
+		.closing-strip,
+		.session-card {
+			padding: 22px;
+		}
+
+		.calendar-row span {
+			min-height: 56px;
+			font-size: 0.85rem;
+		}
+
+		.closing-strip {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+	}
+</style>

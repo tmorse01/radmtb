@@ -1,11 +1,1301 @@
----
-import Welcome from '../components/Welcome.astro';
+﻿---
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const navItems = [
+	{ label: 'Home', href: '#top' },
+	{ label: 'Coaching', href: '#coaching' },
+	{ label: 'Clinics', href: '#clinics' },
+	{ label: 'Videos', href: '#videos' },
+	{ label: 'About', href: '#about' },
+	{ label: 'Book', href: '/book' },
+];
+
+const trustItems = [
+	'Private Coaching',
+	'Group Clinics',
+	'Beginner to Advanced Riders',
+	'Trail-Based Skills Training',
+];
+
+const metrics = [
+	{ value: 'Real Trails', label: 'Skills taught where they matter most' },
+	{ value: 'Small Groups', label: 'Clear coaching with room for feedback' },
+	{ value: 'Progression', label: 'Sessions built around rider goals' },
+];
+
+const programs = [
+	{
+		title: 'Private Coaching',
+		description: 'One-on-one sessions built around the exact habits, terrain, and features you want to improve.',
+		focus: ['Cornering', 'Braking', 'Body position', 'Line choice'],
+	},
+	{
+		title: 'Group Clinics',
+		description: 'Small-group coaching that keeps the energy high while still giving every rider useful, specific feedback.',
+		focus: ['Foundational skills', 'Trail confidence', 'Flow', 'Sessioning'],
+	},
+	{
+		title: 'Jump / Drop Sessions',
+		description: 'Focused progressions for riders who want to approach features with more consistency and less hesitation.',
+		focus: ['Jump timing', 'Drops', 'Bike control', 'Takeoff posture'],
+	},
+	{
+		title: 'Trail Skills Sessions',
+		description: 'Ride actual descents and technical trail segments while working on control, speed management, and decision-making.',
+		focus: ['Technical descents', 'Speed control', 'Terrain management', 'Commitment'],
+	},
+];
+
+const skills = [
+	'Cornering Technique',
+	'Jump Fundamentals',
+	'Drop Technique',
+	'Technical Descents',
+	'Line Choice',
+	'Climbing Efficiency',
+	'Braking Control',
+	'Body Position',
+];
+
+const videoCards = [
+	{
+		title: 'Technique Demonstrations',
+		description: 'Short breakdowns that show what good movement actually looks like on trail.',
+	},
+	{
+		title: 'Rider Progression Clips',
+		description: 'Before-and-after style edits that make progress visible and motivating.',
+	},
+	{
+		title: 'Coaching Moments',
+		description: 'On-trail instruction, live cues, and the kind of feedback riders can use immediately.',
+	},
+];
+
+const testimonials = [
+	'I finally felt confident on jumps I used to avoid.',
+	'I learned more in one session than months of riding alone.',
+	'The coaching was clear, encouraging, and immediately useful.',
+];
+
+const locations = [
+	{
+		name: 'Bellingham',
+		detail: 'A home base for riders who want access to steep, fast, technical terrain and varied skill progression.',
+	},
+	{
+		name: 'Galbraith Mountain',
+		detail: 'Perfect for cornering work, trail flow, line choice, and feature progression on real dirt.',
+	},
+	{
+		name: 'Chuckanut',
+		detail: 'A strong setting for commitment, technical descending, traction awareness, and terrain reading.',
+	},
+	{
+		name: 'Tiger Mountain',
+		detail: 'A bigger-mountain option for riders who want speed control and confidence on more demanding lines.',
+	},
+];
+
+const pricing = [
+	{ name: 'Private Coaching', price: '$150', note: 'Focused one-on-one trail session' },
+	{ name: 'Group Clinic', price: '$95', note: 'Shared progression with a small crew' },
+	{ name: 'Trail Session', price: '$120', note: 'Guided coaching on real descents' },
+];
+
+const bookingSteps = [
+	'Choose the session format that matches your goals.',
+	'Pick a location and terrain focus for the day.',
+	'Ride with a plan, get live feedback, and leave with specific next steps.',
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+	title="RAD MTB Coaching | Premium Trail-Based Mountain Bike Coaching"
+	description="A cinematic mountain bike coaching landing page focused on confidence, progression, and real trail skills."
+>
+	<div class="page-shell">
+		<header class="site-header">
+			<a class="brand" href="#top" aria-label="RAD MTB Coaching home">
+				<span class="brand-mark">RAD</span>
+				<span class="brand-copy">
+					<span>MTB Coaching</span>
+					<span>Trail-first rider progression</span>
+				</span>
+			</a>
+
+			<nav class="site-nav" aria-label="Primary">
+				{navItems.map((item) => (
+					<a href={item.href}>{item.label}</a>
+				))}
+			</nav>
+
+			<a class="nav-cta" href="/book">Book Coaching</a>
+		</header>
+
+		<main id="top">
+			<section class="hero section">
+				<div class="hero-copy reveal" style="--delay: 0.08s;">
+					<p class="eyebrow">Bellingham, WA | Cinematic trail coaching</p>
+					<h1>Ride with confidence. Ride with control.</h1>
+					<p class="lede">
+						Mountain bike coaching designed to improve technique, confidence, and control on
+						real trails, not just parking-lot drills.
+					</p>
+
+					<div class="hero-actions">
+						<a class="button button-primary" href="/book">Book Coaching</a>
+						<a class="button button-secondary" href="#coaching">See Programs</a>
+					</div>
+
+					<ul class="hero-metrics" aria-label="Key highlights">
+						{metrics.map((item) => (
+							<li>
+								<strong>{item.value}</strong>
+								<span>{item.label}</span>
+							</li>
+						))}
+					</ul>
+				</div>
+
+				<div class="hero-visual reveal" style="--delay: 0.2s;">
+					<div class="visual-frame visual-frame-main">
+						<div class="frame-overlay">
+							<span class="frame-kicker">Hero Film</span>
+							<h2>Descents, coaching moments, and visuals that feel immersive.</h2>
+							<p>Built to hold a full-screen rider image or video with bold typography on top.</p>
+						</div>
+						<div class="frame-stats">
+							<span>Confidence</span>
+							<span>Control</span>
+							<span>Progression</span>
+						</div>
+					</div>
+
+					<div class="visual-grid">
+						<div class="visual-frame visual-frame-detail">
+							<div class="frame-overlay">
+								<span class="frame-kicker">Shot Direction 01</span>
+								<p>Berms, braking zones, and mid-turn body position.</p>
+							</div>
+						</div>
+						<div class="visual-frame visual-frame-accent">
+							<div class="frame-overlay">
+								<span class="frame-kicker">Shot Direction 02</span>
+								<p>Jump sessions, rider progression clips, and coach-rider interaction.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="trust-strip reveal" style="--delay: 0.28s;">
+				{trustItems.map((item) => (
+					<div class="trust-pill">{item}</div>
+				))}
+			</section>
+
+			<section id="coaching" class="section content-grid">
+				<div class="section-heading reveal" style="--delay: 0.05s;">
+					<p class="eyebrow">Coaching Programs</p>
+					<h2>Coaching formats built for real progression.</h2>
+					<p>
+						Each format keeps the visual feel of a premium MTB brand site while staying focused
+						on coaching outcomes, rider confidence, and trail performance.
+					</p>
+				</div>
+
+				<div class="program-grid">
+					{programs.map((program, index) => (
+						<article class="program-card reveal" style={`--delay: ${0.08 + index * 0.06}s;`}>
+							<div class="card-topline"></div>
+							<p class="card-index">0{index + 1}</p>
+							<h3>{program.title}</h3>
+							<p>{program.description}</p>
+							<ul class="tag-list">
+								{program.focus.map((item) => (
+									<li>{item}</li>
+								))}
+							</ul>
+						</article>
+					))}
+				</div>
+			</section>
+
+			<section id="clinics" class="section split-section">
+				<div class="split-card reveal" style="--delay: 0.06s;">
+					<p class="eyebrow">Clinic Experience</p>
+					<h2>Small groups. Clear feedback. More reps.</h2>
+					<p>
+						Group sessions should still feel premium. The layout makes room for bold event
+						posters, clinic calendars, and media that shows riders learning together rather than
+						a generic service grid.
+					</p>
+				</div>
+
+				<div class="editorial-stack reveal" style="--delay: 0.16s;">
+					<div class="editorial-card">
+						<span>Foundations</span>
+						<p>Beginner-friendly clinics for braking, body position, and confidence on trail.</p>
+					</div>
+					<div class="editorial-card">
+						<span>Flow Sessions</span>
+						<p>Cornering and line-choice clinics designed around speed, rhythm, and vision.</p>
+					</div>
+					<div class="editorial-card">
+						<span>Feature Focus</span>
+						<p>Jump and drop progressions that stay structured, safe, and confidence-building.</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="section content-grid">
+				<div class="section-heading reveal" style="--delay: 0.05s;">
+					<p class="eyebrow">Skills Riders Will Learn</p>
+					<h2>Core skills for real trail riding.</h2>
+				</div>
+
+				<div class="skills-grid">
+					{skills.map((skill, index) => (
+						<div class="skill-card reveal" style={`--delay: ${0.06 + index * 0.04}s;`}>
+							<span>{String(index + 1).padStart(2, '0')}</span>
+							<h3>{skill}</h3>
+						</div>
+					))}
+				</div>
+			</section>
+
+			<section id="videos" class="section media-section">
+				<div class="media-lead reveal" style="--delay: 0.05s;">
+					<p class="eyebrow">Video Training</p>
+					<h2>Use video to show the coaching in motion.</h2>
+					<p>
+						This section is designed for YouTube embeds, progression edits, and technique
+						breakdowns. The styling supports widescreen video without collapsing into a generic
+						content block.
+					</p>
+				</div>
+
+				<div class="media-layout">
+					<div class="video-stage reveal" style="--delay: 0.12s;">
+						<div class="video-screen">
+							<div class="play-button" aria-hidden="true"></div>
+							<div class="video-copy">
+								<span>Featured Video</span>
+								<h3>Technique demo or rider progression edit</h3>
+								<p>Swap this panel for a YouTube embed when footage is ready.</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="media-cards">
+						{videoCards.map((item, index) => (
+							<article class="media-card reveal" style={`--delay: ${0.16 + index * 0.06}s;`}>
+								<span>{String(index + 1).padStart(2, '0')}</span>
+								<h3>{item.title}</h3>
+								<p>{item.description}</p>
+							</article>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<section id="about" class="section split-section about-section">
+				<div class="split-card reveal" style="--delay: 0.06s;">
+					<p class="eyebrow">About The Coach</p>
+					<h2>Trail knowledge, calm feedback, and repeatable progression.</h2>
+					<p>
+						The copy direction here emphasizes experience on real terrain, professional
+						communication, and confidence building rather than hype. It gives the brand an
+						outdoor-performance feel while keeping the subject squarely on rider development.
+					</p>
+				</div>
+
+				<div class="philosophy-grid reveal" style="--delay: 0.16s;">
+					<div class="philosophy-card">
+						<h3>Real Trail Context</h3>
+						<p>Skills are coached on the terrain riders actually struggle with, not abstract drills alone.</p>
+					</div>
+					<div class="philosophy-card">
+						<h3>Clear Progressions</h3>
+						<p>Sessions move from fundamentals to commitment in a way that feels measured and repeatable.</p>
+					</div>
+					<div class="philosophy-card">
+						<h3>Confidence That Sticks</h3>
+						<p>Riders leave with technique cues they can use on future rides, not just during the session.</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="section content-grid">
+				<div class="section-heading reveal" style="--delay: 0.05s;">
+					<p class="eyebrow">Testimonials</p>
+					<h2>Proof that riders feel the difference.</h2>
+				</div>
+
+				<div class="testimonial-grid">
+					{testimonials.map((quote, index) => (
+						<blockquote class="testimonial-card reveal" style={`--delay: ${0.08 + index * 0.06}s;`}>
+							<p>{quote}</p>
+						</blockquote>
+					))}
+				</div>
+			</section>
+
+			<section class="section locations-section">
+				<div class="section-heading reveal" style="--delay: 0.05s;">
+					<p class="eyebrow">Locations</p>
+					<h2>Real trail environments across the Northwest.</h2>
+					<p>
+						Place matters. The location section is structured to feel like a rider's map, not a
+						plain text list of trail names.
+					</p>
+				</div>
+
+				<div class="location-grid">
+					{locations.map((location, index) => (
+						<article class="location-card reveal" style={`--delay: ${0.08 + index * 0.05}s;`}>
+							<span class="location-dot"></span>
+							<h3>{location.name}</h3>
+							<p>{location.detail}</p>
+						</article>
+					))}
+				</div>
+			</section>
+
+			<section id="book" class="section booking-section">
+				<div class="booking-callout reveal" style="--delay: 0.05s;">
+					<p class="eyebrow">Booking</p>
+					<h2>Booking and availability live on a dedicated page.</h2>
+					<p>
+						Use the booking page for session details, preparation notes, and the Calendly
+						availability placeholder that will become the live scheduling surface.
+					</p>
+					<a class="button button-primary" href="/book">Open Booking Page</a>
+				</div>
+
+				<div class="pricing-panel reveal" style="--delay: 0.14s;">
+					<div class="pricing-grid">
+						{pricing.map((item) => (
+							<div class="price-card">
+								<p>{item.name}</p>
+								<h3>{item.price}</h3>
+								<span>{item.note}</span>
+							</div>
+						))}
+					</div>
+
+					<div class="booking-steps">
+						{bookingSteps.map((step, index) => (
+							<div class="booking-step">
+								<span>{String(index + 1).padStart(2, '0')}</span>
+								<p>{step}</p>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<p>RAD MTB Coaching</p>
+			<span>Premium mountain bike coaching for rider progression, confidence, and control.</span>
+		</footer>
+	</div>
 </Layout>
+
+<style>
+	.page-shell {
+		width: min(calc(100% - 32px), var(--max-width));
+		margin: 0 auto;
+		padding: 22px 0 48px;
+	}
+
+	.site-header {
+		position: sticky;
+		top: 16px;
+		z-index: 20;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 18px;
+		padding: 14px 18px;
+		margin-bottom: 28px;
+		border: 1px solid var(--line);
+		border-radius: 999px;
+		background: rgba(8, 11, 9, 0.72);
+		backdrop-filter: blur(16px);
+		box-shadow: var(--shadow);
+	}
+
+	.brand {
+		display: inline-flex;
+		align-items: center;
+		gap: 14px;
+		text-decoration: none;
+	}
+
+	.brand-mark,
+	.eyebrow,
+	.site-nav a,
+	.card-index,
+	.frame-kicker,
+	.media-card span,
+	.location-dot,
+	.booking-step span,
+	.skill-card span {
+		font-family: 'Anton', Impact, sans-serif;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.brand-mark {
+		display: inline-grid;
+		place-items: center;
+		width: 52px;
+		height: 52px;
+		border-radius: 50%;
+		color: #0d120e;
+		background: linear-gradient(135deg, var(--forest-bright), var(--earth));
+		font-size: 1.05rem;
+	}
+
+	.brand-copy {
+		display: grid;
+		gap: 2px;
+	}
+
+	.brand-copy span:first-child {
+		font-weight: 700;
+	}
+
+	.brand-copy span:last-child {
+		color: var(--muted);
+		font-size: 0.82rem;
+	}
+
+	.site-nav {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 20px;
+		flex: 1;
+	}
+
+	.site-nav a {
+		color: var(--muted);
+		font-size: 0.78rem;
+		text-decoration: none;
+	}
+
+	.site-nav a:hover,
+	.site-nav a:focus-visible {
+		color: var(--text);
+	}
+
+	.nav-cta,
+	.button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 48px;
+		padding: 0 18px;
+		border-radius: 999px;
+		border: 1px solid transparent;
+		font-weight: 700;
+		text-decoration: none;
+		transition:
+			transform 0.2s ease,
+			border-color 0.2s ease,
+			background 0.2s ease;
+	}
+
+	.nav-cta,
+	.button-primary {
+		color: #081008;
+		background: linear-gradient(135deg, var(--forest-bright), #d3c498 86%);
+	}
+
+	.button-secondary {
+		border-color: var(--line-strong);
+		background: rgba(255, 255, 255, 0.04);
+	}
+
+	.nav-cta:hover,
+	.nav-cta:focus-visible,
+	.button:hover,
+	.button:focus-visible {
+		transform: translateY(-2px);
+	}
+
+	main {
+		display: grid;
+		gap: 34px;
+	}
+
+	.section {
+		scroll-margin-top: 110px;
+	}
+
+	.hero {
+		display: grid;
+		grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
+		gap: 28px;
+		align-items: stretch;
+		padding-top: 18px;
+		min-height: calc(100vh - 148px);
+	}
+
+	.hero-copy,
+	.hero-visual,
+	.trust-strip,
+	.program-card,
+	.split-card,
+	.editorial-card,
+	.skill-card,
+	.video-stage,
+	.media-card,
+	.philosophy-card,
+	.testimonial-card,
+	.location-card,
+	.booking-callout,
+	.pricing-panel {
+		animation: rise 0.8s ease both;
+		animation-delay: var(--delay, 0s);
+	}
+
+	.hero-copy {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding: 40px 10px 40px 0;
+	}
+
+	.eyebrow {
+		margin: 0 0 14px;
+		color: var(--earth);
+		font-size: 0.82rem;
+	}
+
+	h1,
+	h2,
+	h3 {
+		margin: 0;
+		line-height: 1.02;
+	}
+
+	h1,
+	h2 {
+		font-family: 'Anton', Impact, sans-serif;
+		text-transform: uppercase;
+		letter-spacing: 0.015em;
+	}
+
+	h1 {
+		max-width: 12ch;
+		font-size: clamp(3.6rem, 7vw, 6.4rem);
+	}
+
+	h2 {
+		font-size: clamp(2rem, 3.3vw, 3.4rem);
+	}
+
+	h3 {
+		font-size: 1.45rem;
+		line-height: 1.05;
+	}
+
+	.lede,
+	.section-heading > p:last-child,
+	.split-card p:last-child,
+	.media-lead p:last-child,
+	.booking-callout p:last-of-type,
+	.location-card p,
+	.philosophy-card p,
+	.media-card p,
+	.program-card p,
+	.testimonial-card p,
+	.editorial-card p,
+	.video-copy p {
+		color: var(--muted);
+		line-height: 1.65;
+	}
+
+	.lede {
+		max-width: 58ch;
+		margin: 20px 0 0;
+		font-size: 1.05rem;
+	}
+
+	.hero-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 14px;
+		margin-top: 28px;
+	}
+
+	.hero-metrics {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 14px;
+		padding: 0;
+		margin: 36px 0 0;
+		list-style: none;
+	}
+
+	.hero-metrics li {
+		padding: 18px;
+		border: 1px solid var(--line);
+		border-radius: var(--radius-md);
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+	}
+
+	.hero-metrics strong {
+		display: block;
+		margin-bottom: 8px;
+		font-size: 1.05rem;
+	}
+
+	.hero-metrics span {
+		color: var(--muted);
+		font-size: 0.92rem;
+		line-height: 1.45;
+	}
+
+	.hero-visual {
+		display: grid;
+		grid-template-rows: minmax(360px, 1fr) auto;
+		gap: 18px;
+	}
+
+	.visual-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 18px;
+	}
+
+	.visual-frame {
+		position: relative;
+		overflow: hidden;
+		border: 1px solid rgba(213, 206, 182, 0.16);
+		border-radius: var(--radius-xl);
+		background:
+			linear-gradient(180deg, rgba(7, 9, 7, 0.02), rgba(7, 9, 7, 0.84)),
+			radial-gradient(circle at 20% 20%, rgba(125, 163, 109, 0.34), transparent 25%),
+			radial-gradient(circle at 82% 22%, rgba(219, 124, 52, 0.26), transparent 24%),
+			linear-gradient(135deg, #1d261e 0%, #0f1411 60%, #151611 100%);
+		box-shadow: var(--shadow);
+	}
+
+	.visual-frame::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(120deg, rgba(255, 255, 255, 0.1), transparent 32%);
+		opacity: 0.65;
+	}
+
+	.visual-frame-main {
+		min-height: 520px;
+	}
+
+	.visual-frame-detail,
+	.visual-frame-accent {
+		min-height: 220px;
+	}
+
+	.visual-frame-detail {
+		background:
+			linear-gradient(180deg, rgba(7, 9, 7, 0.06), rgba(7, 9, 7, 0.86)),
+			radial-gradient(circle at 20% 30%, rgba(182, 158, 119, 0.18), transparent 30%),
+			linear-gradient(145deg, #1f221c 0%, #10130f 100%);
+	}
+
+	.visual-frame-accent {
+		background:
+			linear-gradient(180deg, rgba(7, 9, 7, 0.06), rgba(7, 9, 7, 0.86)),
+			radial-gradient(circle at 70% 25%, rgba(219, 124, 52, 0.22), transparent 26%),
+			linear-gradient(145deg, #23221b 0%, #10130f 100%);
+	}
+
+	.frame-overlay {
+		position: absolute;
+		inset: auto 0 0;
+		padding: 28px;
+		z-index: 1;
+	}
+
+	.frame-kicker {
+		display: inline-block;
+		margin-bottom: 12px;
+		color: var(--earth);
+		font-size: 0.76rem;
+	}
+
+	.frame-overlay h2 {
+		max-width: 12ch;
+		font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+	}
+
+	.frame-overlay p {
+		max-width: 38ch;
+		margin: 14px 0 0;
+		color: var(--muted);
+		line-height: 1.6;
+	}
+
+	.frame-stats {
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		z-index: 1;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		max-width: 240px;
+		justify-content: flex-end;
+	}
+
+	.frame-stats span,
+	.trust-pill,
+	.tag-list li {
+		padding: 10px 14px;
+		border: 1px solid rgba(255, 255, 255, 0.12);
+		border-radius: 999px;
+		background: rgba(8, 11, 9, 0.52);
+		backdrop-filter: blur(12px);
+		font-size: 0.86rem;
+	}
+
+	.trust-strip {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 14px;
+		padding: 18px;
+		border: 1px solid var(--line);
+		border-radius: var(--radius-lg);
+		background: rgba(14, 18, 15, 0.78);
+	}
+
+	.content-grid {
+		display: grid;
+		gap: 24px;
+		padding: 40px 0 8px;
+	}
+
+	.section-heading {
+		display: grid;
+		gap: 14px;
+		max-width: 68ch;
+	}
+
+	.program-grid,
+	.skills-grid,
+	.testimonial-grid,
+	.location-grid {
+		display: grid;
+		gap: 18px;
+	}
+
+	.program-grid {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
+	.program-card,
+	.skill-card,
+	.media-card,
+	.testimonial-card,
+	.location-card,
+	.price-card,
+	.booking-step,
+	.editorial-card,
+	.philosophy-card {
+		position: relative;
+		overflow: hidden;
+		border: 1px solid var(--line);
+		border-radius: var(--radius-lg);
+		background: linear-gradient(180deg, rgba(20, 26, 22, 0.95), rgba(11, 14, 12, 0.95));
+		box-shadow: var(--shadow);
+	}
+
+	.card-topline {
+		height: 4px;
+		margin: -1px -1px 18px;
+		background: linear-gradient(90deg, var(--forest-bright), var(--earth), var(--orange));
+	}
+
+	.card-index {
+		margin: 0 0 18px;
+		color: var(--earth);
+		font-size: 0.78rem;
+	}
+
+	.program-card {
+		padding: 0 24px 24px;
+	}
+
+	.program-card h3 {
+		margin-bottom: 12px;
+	}
+
+	.tag-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		padding: 0;
+		margin: 22px 0 0;
+		list-style: none;
+	}
+
+	.split-section {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(320px, 0.92fr);
+		gap: 20px;
+		align-items: stretch;
+		padding: 26px 0 8px;
+	}
+
+	.split-card,
+	.booking-callout {
+		padding: 34px;
+		border: 1px solid var(--line);
+		border-radius: var(--radius-xl);
+		background:
+			linear-gradient(160deg, rgba(255, 255, 255, 0.04), transparent 38%),
+			linear-gradient(180deg, rgba(20, 26, 22, 0.95), rgba(11, 14, 12, 0.95));
+		box-shadow: var(--shadow);
+	}
+
+	.split-card,
+	.booking-callout,
+	.media-lead {
+		display: grid;
+		gap: 14px;
+	}
+
+	.editorial-stack,
+	.philosophy-grid {
+		display: grid;
+		gap: 16px;
+	}
+
+	.editorial-card,
+	.philosophy-card {
+		padding: 24px;
+	}
+
+	.editorial-card span,
+	.video-copy span {
+		display: inline-block;
+		margin-bottom: 12px;
+		color: var(--earth);
+		font-family: 'Anton', Impact, sans-serif;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		font-size: 0.8rem;
+	}
+
+	.skills-grid {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
+	.skill-card {
+		padding: 24px;
+		min-height: 168px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.skill-card span {
+		color: var(--earth);
+		font-size: 0.9rem;
+	}
+
+	.media-section {
+		display: grid;
+		gap: 24px;
+		padding: 30px 0 6px;
+	}
+
+	.media-layout {
+		display: grid;
+		grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+		gap: 18px;
+	}
+
+	.video-stage,
+	.pricing-panel {
+		padding: 20px;
+		border: 1px solid var(--line);
+		border-radius: var(--radius-xl);
+		background: rgba(13, 17, 14, 0.84);
+		box-shadow: var(--shadow);
+	}
+
+	.video-screen {
+		position: relative;
+		min-height: 420px;
+		border-radius: calc(var(--radius-xl) - 6px);
+		overflow: hidden;
+		background:
+			linear-gradient(180deg, rgba(5, 6, 5, 0.04), rgba(5, 6, 5, 0.84)),
+			radial-gradient(circle at 24% 24%, rgba(93, 124, 84, 0.35), transparent 26%),
+			radial-gradient(circle at 78% 18%, rgba(219, 124, 52, 0.2), transparent 24%),
+			linear-gradient(135deg, #253025 0%, #10150f 64%, #171812 100%);
+	}
+
+	.video-screen::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(120deg, rgba(255, 255, 255, 0.08), transparent 28%);
+		opacity: 0.6;
+	}
+
+	.play-button {
+		position: absolute;
+		top: 28px;
+		left: 28px;
+		width: 76px;
+		height: 76px;
+		border-radius: 50%;
+		background: rgba(244, 241, 232, 0.88);
+		box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+	}
+
+	.play-button::before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 53%;
+		transform: translate(-50%, -50%);
+		border-top: 13px solid transparent;
+		border-bottom: 13px solid transparent;
+		border-left: 20px solid #111711;
+	}
+
+	.video-copy {
+		position: absolute;
+		inset: auto 0 0;
+		padding: 30px;
+		z-index: 1;
+	}
+
+	.video-copy h3 {
+		max-width: 13ch;
+		font-size: 1.9rem;
+	}
+
+	.media-cards {
+		display: grid;
+		gap: 16px;
+	}
+
+	.media-card {
+		padding: 24px;
+	}
+
+	.media-card span {
+		color: var(--earth);
+		font-size: 0.85rem;
+	}
+
+	.media-card h3 {
+		margin: 12px 0 10px;
+	}
+
+	.about-section {
+		padding-top: 8px;
+	}
+
+	.testimonial-grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.testimonial-card {
+		padding: 28px;
+		margin: 0;
+	}
+
+	.testimonial-card p {
+		font-size: 1.14rem;
+	}
+
+	.testimonial-card p::before {
+		content: '"';
+		color: var(--earth);
+		font-family: 'Anton', Impact, sans-serif;
+		font-size: 2rem;
+		margin-right: 2px;
+	}
+
+	.locations-section {
+		display: grid;
+		gap: 24px;
+		padding: 10px 0 0;
+	}
+
+	.location-grid {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
+	.location-card {
+		padding: 24px;
+	}
+
+	.location-dot {
+		display: inline-flex;
+		width: 14px;
+		height: 14px;
+		margin-bottom: 18px;
+		border-radius: 50%;
+		background: linear-gradient(135deg, var(--forest-bright), var(--orange));
+		box-shadow: 0 0 0 10px rgba(125, 163, 109, 0.08);
+	}
+
+	.location-card h3 {
+		margin-bottom: 12px;
+	}
+
+	.booking-section {
+		display: grid;
+		grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+		gap: 20px;
+		padding: 20px 0 0;
+	}
+
+	.booking-callout .button {
+		width: fit-content;
+		margin-top: 8px;
+	}
+
+	.pricing-panel {
+		display: grid;
+		gap: 20px;
+	}
+
+	.pricing-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 16px;
+	}
+
+	.price-card {
+		padding: 22px;
+	}
+
+	.price-card p,
+	.price-card span {
+		color: var(--muted);
+	}
+
+	.price-card p {
+		margin: 0 0 8px;
+	}
+
+	.price-card h3 {
+		margin-bottom: 8px;
+		font-family: 'Anton', Impact, sans-serif;
+		font-size: 2.3rem;
+		letter-spacing: 0.04em;
+	}
+
+	.booking-steps {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 16px;
+	}
+
+	.booking-step {
+		padding: 22px;
+	}
+
+	.booking-step span {
+		display: inline-block;
+		margin-bottom: 14px;
+		color: var(--earth);
+		font-size: 0.82rem;
+	}
+
+	.booking-step p {
+		margin: 0;
+		color: var(--muted);
+		line-height: 1.6;
+	}
+
+	.site-footer {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 14px;
+		padding: 34px 4px 16px;
+		color: var(--muted);
+	}
+
+	.site-footer p {
+		margin: 0;
+		color: var(--text);
+		font-family: 'Anton', Impact, sans-serif;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	.site-footer span {
+		max-width: 54ch;
+		line-height: 1.5;
+	}
+
+	@keyframes rise {
+		from {
+			opacity: 0;
+			transform: translateY(18px);
+		}
+
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@media (max-width: 1120px) {
+		.hero,
+		.media-layout,
+		.booking-section,
+		.split-section,
+		.program-grid,
+		.location-grid,
+		.skills-grid,
+		.testimonial-grid,
+		.pricing-grid,
+		.booking-steps {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.hero {
+			min-height: auto;
+		}
+
+		.program-grid,
+		.skills-grid,
+		.location-grid {
+			gap: 16px;
+		}
+
+		.site-header {
+			border-radius: 32px;
+			flex-wrap: wrap;
+		}
+
+		.site-nav {
+			order: 3;
+			flex-basis: 100%;
+			justify-content: space-between;
+		}
+	}
+
+	@media (max-width: 780px) {
+		.page-shell {
+			width: min(calc(100% - 22px), var(--max-width));
+			padding-top: 12px;
+		}
+
+		.hero,
+		.media-layout,
+		.booking-section,
+		.split-section,
+		.program-grid,
+		.visual-grid,
+		.skills-grid,
+		.testimonial-grid,
+		.location-grid,
+		.pricing-grid,
+		.booking-steps,
+		.hero-metrics,
+		.trust-strip {
+			grid-template-columns: 1fr;
+		}
+
+		.site-header {
+			position: static;
+			padding: 16px;
+			border-radius: 28px;
+		}
+
+		.site-nav {
+			justify-content: flex-start;
+			flex-wrap: wrap;
+			gap: 14px 18px;
+		}
+
+		.nav-cta {
+			width: 100%;
+		}
+
+		.hero-copy {
+			padding-right: 0;
+		}
+
+		h1 {
+			max-width: none;
+			font-size: clamp(2.9rem, 16vw, 4.8rem);
+		}
+
+		h2 {
+			font-size: clamp(1.8rem, 10vw, 2.6rem);
+		}
+
+		.visual-frame-main {
+			min-height: 420px;
+		}
+
+		.visual-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.frame-stats {
+			position: static;
+			padding: 18px 18px 0;
+			justify-content: flex-start;
+		}
+
+		.frame-overlay {
+			padding: 20px;
+		}
+
+		.split-card,
+		.booking-callout,
+		.program-card,
+		.skill-card,
+		.media-card,
+		.location-card,
+		.testimonial-card,
+		.price-card,
+		.booking-step,
+		.editorial-card,
+		.philosophy-card {
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+
+		.program-card {
+			padding-top: 0;
+			padding-bottom: 20px;
+		}
+
+		.video-screen {
+			min-height: 320px;
+		}
+
+		.play-button {
+			width: 64px;
+			height: 64px;
+		}
+
+		.site-footer {
+			padding-top: 28px;
+		}
+	}
+</style>
+
